@@ -1,17 +1,26 @@
 <?php
 
-require_once 'src/Conta.php';
-require_once 'src/Endereco.php';
-require_once 'src/Titular.php';
-require_once 'src/CPF.php';
 
+// require_once 'src/Modelo/Conta/Conta.php';
+// require_once 'src/Modelo/Endereco.php';
+// require_once 'src/Modelo/Pessoa.php';
+// require_once 'src/Modelo/Conta/Titular.php';
+// require_once 'src/Modelo/CPF.php';
+// No lugar de fazer diversos requires, é mais simples usar o autoload para buscar as classes.
+
+require_once 'autoload.php';
+
+use Alura\Banco\Modelo\Endereco;
+use Alura\Banco\Modelo\CPF;
+use Alura\Banco\Modelo\Conta\Conta;
+use Alura\Banco\Modelo\Conta\Titular;
 
 $endereco = new Endereco('Petropolis', 'um bairro', 'minha rua', '71B' );
 
 $vinicius = new Titular(new CPF('123.456.789-10'), 'Vinicius Dias', $endereco);
 $primeiraConta = new Conta($vinicius);
-$primeiraConta->deposita(500);
-$primeiraConta->saca(300); // isso é ok
+$primeiraConta->depositar(500);
+$primeiraConta->sacar(300); // isso é ok
 
 echo $primeiraConta->recuperaNomeTitular() . PHP_EOL;
 echo $primeiraConta->recuperaCpfTitular() . PHP_EOL;

@@ -1,5 +1,9 @@
 <?php
 
+namespace Alura\Banco\Modelo\Conta;
+
+use Alura\Banco\Modelo;
+
 class Conta
 {
     private $titular;
@@ -19,7 +23,7 @@ class Conta
         self::$numeroDeContas--;
     }
 
-    public function saca(float $valorASacar): void
+    public function sacar(float $valorASacar): void
     {
         if ($valorASacar > $this->saldo) {
             echo "Saldo indisponível";
@@ -29,7 +33,7 @@ class Conta
         $this->saldo -= $valorASacar;
     }
 
-    public function deposita(float $valorADepositar): void
+    public function depositar(float $valorADepositar): void
     {
         if ($valorADepositar < 0) {
             echo "Valor precisa ser positivo";
@@ -57,12 +61,12 @@ class Conta
 
     public function recuperaNomeTitular(): string
     {
-        return $this->titular->recuperaNome();
+        return $this->titular->getName();
     }
 
     public function recuperaCpfTitular(): string
     {
-        return $this->titular->recuperaCpf();
+        return $this->titular->getCpf();
     }
 
     public static function recuperaNumeroDeContas(): int
