@@ -26,3 +26,5 @@ final class CPF
         return $this->numero;
     }
 }
+
+?>
